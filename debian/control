@@ -1,39 +1,111 @@
-Source: bcc
-Maintainer: Brenden Blanco <bblanco@plumgrid.com>
+Source: bpfcc
+Maintainer: Ritesh Raj Sarraf <rrs@debian.org>
 Section: misc
 Priority: optional
-Standards-Version: 3.9.5
-Build-Depends: debhelper (>= 9), cmake, libllvm3.7 | libllvm3.8,
-    llvm-3.7-dev | llvm-3.8-dev, libclang-3.7-dev | libclang-3.8-dev,
-    libelf-dev, bison, flex, libfl-dev, libedit-dev, zlib1g-dev, git,
-    clang-format | clang-format-3.7 | clang-format-3.8, python (>= 2.7),
-    python-netaddr, python-pyroute2, luajit, libluajit-5.1-dev, arping,
-    inetutils-ping | iputils-ping, iperf, netperf, ethtool, devscripts
+Standards-Version: 3.9.8
+Build-Depends: arping,
+	       bison,
+               clang-format,
+               cmake,
+               debhelper (>= 11),
+               dh-python,
+               dpkg-dev (>= 1.16.1~),
+               ethtool,
+               flex,
+               inetutils-ping | iputils-ping,
+               iperf,
+               libclang-4.0-dev,
+               libedit-dev,
+               libelf-dev,
+               libfl-dev,
+               libzip-dev,
+               llvm-4.0-dev,
+               libluajit-5.1-dev [amd64 armel armhf i386 mips mipsel powerpc],
+               luajit [amd64 armel armhf i386 mips mipsel powerpc],
+               python-netaddr,
+               python-pyroute2,
+               python3-distutils,
+               python:any | python-all:any | python-dev:any | python-all-dev:any,
+               python3:any | python3-all:any | python3-dev:any | python3-all-dev:any
 Homepage: https://github.com/iovisor/bcc
+Vcs-Git: https://anonscm.debian.org/git/collab-maint/bpfcc.git
+Vcs-Browser: https://anonscm.debian.org/git/collab-maint/bpfcc.git
 
-Package: libbcc
-Architecture: amd64
-Depends: libc6, libstdc++6, libelf1
-Description: Shared Library for BPF Compiler Collection (BCC)
- Shared Library for BPF Compiler Collection to control BPF programs
- from userspace.
+Package: libbpfcc
+Architecture: amd64 arm64 ppc64el ppc64
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: shared library for BPF Compiler Collection (BCC)
+ BPF Compiler Collection (BCC) is a toolkit for creating efficient
+ kernel tracing and manipulation programs
+ .
+ It makes use of extended BPF (Berkeley Package Filter) and provides tools
+ for BPF based Linux IO analysis, networking, monitoring and more
+ .
+ This package provides the shared library for BPF Compiler Collection
+ to control BPF programs from userspace.
 
-Package: libbcc-examples
-Architecture: any
-Depends: libbcc
-Description: Shared Library for BPF Compiler Collection (BCC)
-
-Package: python-bcc
+Package: libbpfcc-dev
 Architecture: all
-Depends: libbcc, python, binutils
+Section: libdevel
+Depends: ${misc:Depends}, libbpfcc (>= ${binary:Version})
+Description: shared library for BPF Compiler Collection (BCC)
+ BPF Compiler Collection (BCC) is a toolkit for creating efficient
+ kernel tracing and manipulation programs
+ .
+ It makes use of extended BPF (Berkeley Package Filter) and provides tools
+ for BPF based Linux IO analysis, networking, monitoring and more
+ .
+ This package provides the development headers for BPF Compiler Collection
+
+Package: python-bpfcc
+Architecture: all
+Section: python
+Depends: libbpfcc (>= ${binary:Version}), ${misc:Depends}, ${python:Depends}
 Description: Python wrappers for BPF Compiler Collection (BCC)
+ BPF Compiler Collection (BCC) is a toolkit for creating efficient
+ kernel tracing and manipulation programs
+ .
+ It makes use of extended BPF (Berkeley Package Filter) and provides tools
+ for BPF based Linux IO analysis, networking, monitoring and more
+ .
+ This package provides the Python bindings
 
-Package: bcc-tools
+Package: python3-bpfcc
 Architecture: all
-Depends: python-bcc
-Description: Command line tools for BPF Compiler Collection (BCC)
+Section: python
+Depends: libbpfcc (>= ${binary:Version}), ${misc:Depends}, ${python3:Depends}
+Description: Python 3 wrappers for BPF Compiler Collection (BCC)
+ BPF Compiler Collection (BCC) is a toolkit for creating efficient
+ kernel tracing and manipulation programs
+ .
+ It makes use of extended BPF (Berkeley Package Filter) and provides tools
+ for BPF based Linux IO analysis, networking, monitoring and more
+ .
+ This package provides the Python 3 bindings
 
-Package: bcc-lua
+Package: bpfcc-tools
 Architecture: all
-Depends: libbcc
+Depends: python-bpfcc (>= ${binary:Version}),
+         python-netaddr,
+         ${misc:Depends},
+         ${python:Depends}
+Description: tools for BPF Compiler Collection (BCC)
+ BPF Compiler Collection (BCC) is a toolkit for creating efficient
+ kernel tracing and manipulation programs
+ .
+ It makes use of extended BPF (Berkeley Package Filter) and provides tools
+ for BPF based Linux IO analysis, networking, monitoring and more
+ .
+ This package provides the command-line tools and examples
+
+Package: bpfcc-lua
+Architecture: amd64
+Depends: libbpfcc (>= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: Standalone tool to run BCC tracers written in Lua
+ BPF Compiler Collection (BCC) is a toolkit for creating efficient
+ kernel tracing and manipulation programs
+ .
+ It makes use of extended BPF (Berkeley Package Filter) and provides tools
+ for BPF based Linux IO analysis, networking, monitoring and more
+ .
+ This package provides the Lua bindings

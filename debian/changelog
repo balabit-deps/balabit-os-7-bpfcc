@@ -1,71 +1,200 @@
-bcc (0.5.0-1) unstable; urgency=low
+bpfcc (0.5.0-5ubuntu1) bionic; urgency=medium
 
-  * Support for USDT in ARM64
-  * Bugfixes for 4.14 in some tools
-  * Fixes for smoke test failures
-  * Runtime memory usage reductions
+  * Merge from Debian unstable.  Remaining changes:
+    - Use llvm 4.0
 
- -- Brenden Blanco <bblanco@gmail.com>  Wed, 29 Nov 2017 17:00:00 +0000
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 27 Mar 2018 10:00:50 +0200
 
-bcc (0.4.0-1) unstable; urgency=low
+bpfcc (0.5.0-5) unstable; urgency=medium
 
-  * Bugfixes
-  * Support for kernel up to 4.14
+  * Add python3 bpfcc package. Thanks to Andreas Gerstmayr
+  * Add python3-distutils to build dependency (Closes: #893434)
+  * Add missing debian documents (Closes: #891035)
 
- -- Brenden Blanco <bblanco@gmail.com>  Fri, 20 Oct 2017 17:00:00 +0000
+ -- Ritesh Raj Sarraf <rrs@debian.org>  Fri, 23 Mar 2018 15:20:13 +0530
 
-bcc (0.3.0-1) unstable; urgency=low
+bpfcc (0.5.0-4ubuntu2) bionic; urgency=medium
 
-  * Many bugfixes
-  * Many tools converted to perf ring buffer
-  * New utilities in tools/
-   * capable, cpuunclaimed, dbslower, dbstat, deadlock_detector, llcstat,
-     mountsnoop, runqlen, slabratetop, syscount, tcplife, tcptop, ttysnoop,
-     ucalls, uflow, ugc, uobjnew, ustat, uthreads
-  * New C++ API
-  * Support for kernel up to 4.10
+  * Fixup previous merge 
 
- -- Brenden Blanco <bblanco@gmail.com>  Thu, 09 Mar 2017 19:08:08 +0000
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 21 Feb 2018 10:44:30 +0100
 
-bcc (0.2.0-1) unstable; urgency=low
+bpfcc (0.5.0-4ubuntu1) bionic; urgency=low
 
-  * Add many new utilities in tools/
-  * Support for USDT
-  * Support for lua
-  * Many utilities converted to perf ring buffer
-  * Support for tracepoints
+  * Merge from Debian unstable.  Remaining changes:
+    - Use llvm 4.0
 
- -- Brenden Blanco <bblanco@plumgrid.com>  Thu, 08 Sep 2016 17:05:28 -0700
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 21 Feb 2018 10:39:48 +0100
 
-bcc (0.1.8-1) unstable; urgency=low
+bpfcc (0.5.0-4) unstable; urgency=medium
 
-  * Add many new utilities in tools/
-   * wakeuptime, offwaketime, argdist, {xfs,zfs,ext4}{slower,dist}, others
-  * Support for bpf_perf_event()
-  * Support for public tables shared between programs
-  * Support for up to 4.4 features
-  * Remove external file dependencies from clang lib
+  * Check for file type before renaming (Closes: #890686)
 
- -- Brenden Blanco <bblanco@plumgrid.com>  Mon, 23 Feb 2016 00:41:00 +0000
+ -- Ritesh Raj Sarraf <rrs@debian.org>  Tue, 20 Feb 2018 15:03:10 +0530
 
-bcc (0.1.7-1) unstable; urgency=low
+bpfcc (0.5.0-3ubuntu1) bionic; urgency=low
 
-  * Tracing features and bugfixes
-  * Built against LLVM 3.8 HEAD
+  * Merge from Debian unstable.  Remaining changes:
+    - Use llvm 4.0
 
- -- Brenden Blanco <bblanco@plumgrid.com>  Mon, 12 Oct 2015 16:47:09 +0000
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Fri, 22 Dec 2017 11:56:35 +0100
 
-bcc (0.1.6-1) unstable; urgency=low
+bpfcc (0.5.0-3) unstable; urgency=medium
 
-  * Stability fixes
-  * Improvements to python API
-  * Tracing features
-  * Support for kernel 4.2 features
+  * Extend libbpfcc to ppc64 too. And restrict bpfcc-lua to amd64 only
 
- -- Brenden Blanco <bblanco@plumgrid.com>  Wed, 02 Sep 2015 16:23:19 +0000
+ -- Ritesh Raj Sarraf <rrs@debian.org>  Wed, 20 Dec 2017 21:35:42 +0530
 
-bcc (0.1.5-1) unstable; urgency=low
+bpfcc (0.5.0-2) unstable; urgency=medium
 
-  * Initial release
+  * Really enable some 64bit architectures. We'll extend to other
+    architectures only when upstream has readiness
 
- -- Brenden Blanco <bblanco@plumgrid.com>  Mon, 06 Jul 2015 18:04:28 +0000
+ -- Ritesh Raj Sarraf <rrs@debian.org>  Tue, 19 Dec 2017 22:47:20 +0530
+
+bpfcc (0.5.0-1ubuntu3) bionic; urgency=medium
+
+  * Back to any, readd previous patch to fix build failures.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 18 Dec 2017 15:30:43 +0100
+
+bpfcc (0.5.0-1ubuntu2) bionic; urgency=medium
+
+  * Restrict lua binding to packages where lua is available
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 18 Dec 2017 15:07:46 +0100
+
+bpfcc (0.5.0-1ubuntu1) bionic; urgency=medium
+
+  * Merge from Debian unstable, remaining changes:
+    - Fixup 64bit architectures list
+    - Use llvm 4.0
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Mon, 18 Dec 2017 14:17:26 +0100
+
+bpfcc (0.5.0-1) unstable; urgency=medium
+
+  * New upstream version 0.5.0
+  * Drop architecture support to 64bit common architectures only
+    (Closes: #882344)
+
+ -- Ritesh Raj Sarraf <rrs@debian.org>  Sun, 17 Dec 2017 18:19:44 +0530
+
+bpfcc (0.4.0-1ubuntu3) bionic; urgency=high
+
+  * Comment out test that only works on amd64 and ppc64el.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Tue, 28 Nov 2017 20:55:32 -0600
+
+bpfcc (0.4.0-1ubuntu2) bionic; urgency=medium
+
+  * Set version dependencies on libllvm-dev and libclang-dev because Ubuntu's
+    llvm-defaults uses 5.0 (of both) and this package isn't compatible with
+    those versions quite yet.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Wed, 22 Nov 2017 18:01:20 -0600
+
+bpfcc (0.4.0-1ubuntu1) bionic; urgency=high
+
+  * Set version dependencies on libllvm-dev and libclang-dev because Ubuntu's
+    llvm-defaults uses 5.0 (of both) and this package isn't compatible with
+    those versions quite yet.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Wed, 22 Nov 2017 17:40:57 -0600
+
+bpfcc (0.4.0-1) unstable; urgency=medium
+
+  [ Edward Betts ]
+  * correct spelling mistake
+
+  [ Ritesh Raj Sarraf ]
+  * Fix FTBFS with clang 4.0.
+    Thanks to Sylvestre Ledru (Closes: 882160)
+  * New upstream version 0.4.0
+  * Disable User-level Statically Defined Tracing
+  * Fix patches
+  * Revert "Disable User-level Statically Defined Tracing"
+  * Check manpage file's existence. For now, this will only honor
+    regular manpages, and not symlinks
+
+ -- Ritesh Raj Sarraf <rrs@debian.org>  Tue, 21 Nov 2017 19:16:03 +0530
+
+bpfcc (0.3.0-4) unstable; urgency=medium
+
+  * Add dependency on library for the development package.
+    Thanks to Alexander Kurtz (Closes: #878922)
+  * Revert "Add depends on linux headers package, which is a dependency
+    for JIT"
+  * Update README.Debian with details about dependency on running
+    kernel development headers and debug package.
+    Thanks to Alexander Kurtz (Closes: #878935)
+
+ -- Ritesh Raj Sarraf <rrs@debian.org>  Mon, 23 Oct 2017 22:08:02 +0530
+
+bpfcc (0.3.0-3) unstable; urgency=medium
+
+  * Drop netperf from build dependency. It is a non-free package
+  * Don't parse debian/changelog. Instead rely on dpkg for it
+
+ -- Ritesh Raj Sarraf <rrs@debian.org>  Mon, 09 Oct 2017 23:06:59 +0545
+
+bpfcc (0.3.0-2) unstable; urgency=medium
+
+  * Add depends on linux headers package, which is a dependency 
+    for JIT compilation. Thanks to Damien R. (Closes: #877925)
+  * Add some more build deps
+  * Add patches to fix Lua library detection.
+    Thanks to Damien R. (Closes: #873322)
+
+ -- Ritesh Raj Sarraf <rrs@debian.org>  Mon, 09 Oct 2017 17:06:19 +0545
+
+bpfcc (0.3.0-1) unstable; urgency=medium
+
+  * Restrict Lua dev package to supported architectures
+  * New upstream version 0.3.0
+
+ -- Ritesh Raj Sarraf <rrs@debian.org>  Tue, 20 Jun 2017 13:07:37 +0545
+
+bpfcc (0.2.0+git0.02884a026-2) unstable; urgency=medium
+
+  * Restrict architecture support for Lua (Closes: 864724)
+  * Run wrap-and-sort
+
+ -- Ritesh Raj Sarraf <rrs@debian.org>  Wed, 14 Jun 2017 10:02:47 +0545
+
+bpfcc (0.2.0+git0.02884a026-1) unstable; urgency=medium
+
+  * [06cde45] Add Vcs URLs
+  * [d315114] New upstream version 0.2.0+git0.02884a026
+  * [a82a0d3] Add a debian/README.source file
+  * [71ecdd8] Refresh patch debian/patches/fix-install-path.patch
+  * [b907f40] Don't ship cpp binaries.
+    debian/patches/disable-massive-cpp-binaries.patch
+
+ -- Ritesh Raj Sarraf <rrs@debian.org>  Wed, 22 Feb 2017 15:14:39 +0530
+
+bpfcc (0.2.0-2) unstable; urgency=medium
+
+  * [d33527e] Add libfl-dev to build dependency
+  * [f6c75f8] Drop llvm from build deps. Doesn't need explicit mention
+  * [b1cb3d1] Add patch to fix uint128 build failure on 32bit systems
+  * [4ed5b02] Drop conflict on perf-tools-unstable. With the binary
+    filenames suffixed, both packages can and should co-exist
+  * [0321e23] Educate bpfcc build about linux-headers package split.
+    Thanks to George Kargiotakis (Closes: #849747)
+  * [67afd61] Change all executable filenames. Suffix names with '-bpfcc'
+  * [ffc625a] Drop shlibs:Depends. Not needed here
+  * [f6470d2] Document the binary name suffixes in NEWS and README.Debian
+
+ -- Ritesh Raj Sarraf <rrs@debian.org>  Fri, 30 Dec 2016 23:46:20 +0530
+
+bpfcc (0.2.0-1) unstable; urgency=medium
+
+  * Initial Release (Closes: #846366)
+    Picked many of the initial packaging bits from upstream repository.
+    Thanks. 
+  * [8cf1070] Drop shlibs depends and add python-netaddr to Depends
+  * [a6a9fb4] Add details about files licensed under BSL
+  * [ded0a33] Add Boost License Snippet
+
+ -- Ritesh Raj Sarraf <rrs@debian.org>  Tue, 13 Dec 2016 22:38:32 +0530
